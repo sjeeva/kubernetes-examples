@@ -1,0 +1,13 @@
+# Launch a Deployment & Pod
+kubectl run jcdemo --image=jcdemo/flaskapp --port=5000
+# Inspect Deployment & Pod
+kubectl get deploy
+kubectl get pods
+kubectl describe deploy/jcdemo
+kubectl describe pod -l run=jcdemo
+kubectl get pod -l run=jcdemo -o wide
+# connect to the jcdemo service
+# Launch a busybox or ubuntu image 
+kubectl run busybox --image=busybox -it
+## Run wget -O- <pod id>:5000
+## Also ssh to the master and run wget
