@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jcdemo
+spec:
+  template:
+    metadata:
+      labels:
+        app: jcdemo
+    spec:
+      containers:
+      - name: jcdemo
+        image: jcdemo/flaskapp
+        ports:
+        - containerPort: 5000
