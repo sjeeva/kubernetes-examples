@@ -11,3 +11,6 @@ kubectl get services --namespace=kube-system kube-dns
 
 ## Kubernetes UI
 kubectl get deployments --namespace=kube-system kubernetes-dashboard
+kubectl get services --namespace=kube-system kubernetes-dashboard
+
+kubectl proxy
