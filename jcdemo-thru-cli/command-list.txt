@@ -11,3 +11,17 @@ kubectl get pod -l run=jcdemo -o wide
 kubectl run busybox --image=busybox -it
 ## Run wget -O- <pod id>:5000
 ## Also ssh to the master and run wget
+
+# delete all jcdemo deploy
+kubectl delete $(kubectl get deploy -o name -l run=jcdemo)
+# delete all deploy
+kubectl delete $(kubectl get deploy -o name)
+
+# with replication
+kubectl run jcdemo --image=jcdemo/flaskapp --port=5000 --replicas=5
+
+# exposing as a service
+kubectl expose deploy jcdemo --type=NodePort
+
+# how to get the NodePort working from minikube
+## curl $(minikube ip):<NODE PORT from the kubectl get svc command>
