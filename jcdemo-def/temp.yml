@@ -1,8 +1,0 @@
-something:
-
-  selector:
-    matchLabels:
-      app: jcdemo
-    matchExpressions:
-      - {key: env, operator: In, values: [prod]}
-    
