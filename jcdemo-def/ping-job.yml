@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ping-job
+spec:
+  template:
+    metadata:
+      name: ping
+    spec:
+      containers:
+      - name: ping
+        image: busybox
+        command:
+         - "/bin/sh"
+         - "-c"
+         - "ping -c 3 8.8.8.8"
+      restartPolicy: Never
