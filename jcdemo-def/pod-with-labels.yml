@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jcdemo
+  labels:
+    app: jcdemo
+    env: testing
+spec:
+  containers:
+  - name: jcdemo
+    image: jcdemo/flaskapp
+    ports:
+    - containerPort: 5000
