@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-configmap
+data:
+  trainer: jeeva
+  training: kubernetes
+  
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-demo
+spec:
+  containers:
+    - name: test-container
+      image: gcr.io/google_containers/busybox
+      command: [ "/bin/sh", "-c", "env" ]
+      env:
+        - name: KUBE_CONFIG_1
+          valueFrom:
+            configMapKeyRef:
+              name: demo-configmap
+              key: trainer
+        - name: KUBE_CONFIG_2
+          valueFrom:
+            configMapKeyRef:
+              name: demo-configmap
+              key: training
+  restartPolicy: Never
