@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: voldemo
+spec:
+  containers:
+  - name: c1
+    image: busybox
+    command:
+      - "/bin/sh"
+      - "-c"
+      - "sleep 20000"
+    volumeMounts:
+      - name: volmnt
+        mountPath: "/tmp/volmnt"
+  - name: c2
+    image: busybox
+    command:
+      - "/bin/sh"
+      - "-c"
+      - "sleep 20000"
+    volumeMounts:
+      - name: volmnt
+        mountPath: "/tmp/data"
+  volumes:
+  - name: volmnt
+    persistentVolumeClaim:
+      claimName: pv-demo
